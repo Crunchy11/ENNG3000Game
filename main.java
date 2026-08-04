@@ -37,8 +37,9 @@ public class main {
             //JButton button = new JButton("Click Me");
             
             JPanel playArea = new JPanel();
-playArea.setBounds(150, 100, 900, 550);   // x, y, width, height
-playArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+            playArea.setBounds(150, 100, 900, 550);   // x, y, width, height
+            playArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+            
             // 4. Add UI Components to the JPanel
             panel.add(score);
             panel.add(time);
