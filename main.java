@@ -33,7 +33,7 @@ public class main {
             JLabel time = new JLabel("Time:");
             time.setBounds(10, 10, 100, 30); // x, y, width, height
             time.setFont(new Font("SansSerif", Font.BOLD, 28));    
-            //JButton button = new JButton("Click Me");
+            //JButton button = new JButton("Click Me"); example of hoe to implement a button
             
             //Play Area
             JPanel playArea = new JPanel();
