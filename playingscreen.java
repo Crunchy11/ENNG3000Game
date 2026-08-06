@@ -7,9 +7,10 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class playingscreen extends JPanel {
+    
     public playingscreen(JFrame frame) {
         setLayout(null);
-
+        int difficulty = startscreen.difficulty;
         JLabel score = new JLabel("Score: 0");
         score.setBounds(520, 10, 200, 30);
         score.setFont(new Font("SansSerif", Font.BOLD, 30));
@@ -35,4 +36,6 @@ public class playingscreen extends JPanel {
         add(playArea);
         add(backButton);
     }
+
+
 }

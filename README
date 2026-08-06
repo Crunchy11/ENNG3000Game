@@ -1,0 +1,12 @@
+To Do:
+Everything to do with Moles:
+- Spawn Moles at different speeds based on difficulty
+- Spawn Moles at random locations within the play area
+
+Everything to do with Player:
+- Create a player class that can move around the play area
+- Player can walk over moles to "whack" them
+
+implement a scoring system that increases when a mole is whacked\
+implement a timer that counts down from 60 seconds and ends the game when it reaches 0
+add end screen that displays the player's score and allows them to restart the game or go back to the main menu

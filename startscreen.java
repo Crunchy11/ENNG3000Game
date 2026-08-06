@@ -5,9 +5,11 @@ import javax.swing.JPanel;
 import java.awt.Font;
 
 public class startscreen extends JPanel {
+    public static int difficulty = 0;
     public startscreen(JFrame frame) {
         setLayout(null);
         String font = "SansSerif";
+        
 
         JLabel title = new JLabel("Wack-a-Mole");
         title.setFont(new Font(font, Font.BOLD, 48));
@@ -24,6 +26,7 @@ public class startscreen extends JPanel {
             frame.setContentPane(new playingscreen(frame));
             frame.revalidate();
             frame.repaint();
+            difficulty = 1;
         });
 
         JButton mediumButton = new JButton("MEDIUM");
@@ -33,6 +36,7 @@ public class startscreen extends JPanel {
             frame.setContentPane(new playingscreen(frame));
             frame.revalidate();
             frame.repaint();
+            difficulty = 2;
         });
 
         JButton hardButton = new JButton("HARD");
@@ -42,6 +46,7 @@ public class startscreen extends JPanel {
             frame.setContentPane(new playingscreen(frame));
             frame.revalidate();
             frame.repaint();
+            difficulty = 3;
         });
 
         add(title);
