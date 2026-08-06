@@ -11,6 +11,7 @@ public class playingscreen extends JPanel {
     public playingscreen(JFrame frame) {
         setLayout(null);
         int difficulty = startscreen.difficulty;
+        System.out.println("Difficulty level selected: " + difficulty);
         JLabel score = new JLabel("Score: 0");
         score.setBounds(520, 10, 200, 30);
         score.setFont(new Font("SansSerif", Font.BOLD, 30));
