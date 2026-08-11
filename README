@@ -9,4 +9,5 @@ Everything to do with Player:
 
 implement a scoring system that increases when a mole is whacked\
 implement a timer that counts down from 60 seconds and ends the game when it reaches 0
-add end screen that displays the player's score and allows them to restart the game or go back to the main menu
+add end screen that displays the player's score and allows them to restart the game or go back to the main menuu
+dead zone alarm player when to close to the screnn within 60cm

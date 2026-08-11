@@ -1,3 +1,4 @@
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,7 +11,7 @@ public class startscreen extends JPanel {
         setLayout(null);
         String font = "SansSerif";
         
-
+        //text
         JLabel title = new JLabel("Wack-a-Mole");
         title.setFont(new Font(font, Font.BOLD, 48));
         title.setBounds(435, 150, 600, 80);
@@ -19,6 +20,7 @@ public class startscreen extends JPanel {
         diff.setFont(new Font(font, Font.ITALIC, 30));
         diff.setBounds(385, 250, 600, 80);
 
+        //Difficulty buttons
         JButton easyButton = new JButton("EASY");
         easyButton.setFont(new Font(font, Font.BOLD, 24));
         easyButton.setBounds(500, 400, 200, 60);
