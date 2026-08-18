@@ -1,7 +1,6 @@
 To Do:
 Everything to do with Player:
 - Create a player class that can move around the play area
-- Player can walk over moles to "whack" them
+- Player can walk over moles to "whack" them ehich addes to the score
+- dead zone alarm player when to close to the screnn within 60cm
 
-add end screen that displays the player's score and allows them to restart the game or go back to the main menuu
-dead zone alarm player when to close to the screnn within 60cm
