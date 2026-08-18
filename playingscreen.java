@@ -124,7 +124,7 @@ public class playingscreen extends JPanel {
     }
 
     /** Counts down the game clock and ends the game at zero. */
-    private void startCountdown(JFrame frame) {
+   private void startCountdown(JFrame frame) {
         countdownTimer = new Timer(1000, e -> {
             secondsRemaining--;
             timeLabel.setText("Time: " + secondsRemaining);
@@ -134,13 +134,13 @@ public class playingscreen extends JPanel {
                 for (moles mole : moles) {
                     mole.hidemole();
                 }
-                // simple end state for now - swap this for a proper game-over screen later
-                timeLabel.setText("Time's up! Final score: " + score);
+                frame.setContentPane(new endscreen(frame, score));
+                frame.revalidate();
+                frame.repaint();
             }
         });
         countdownTimer.start();
     }
-
     private void stopTimers() {
         if (spawnTimer != null) spawnTimer.stop();
         if (countdownTimer != null) countdownTimer.stop();
