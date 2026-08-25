@@ -21,7 +21,6 @@ public class playingscreen extends JPanel {
 
     private int score = 0;
     private int secondsRemaining;
-
     private Timer spawnTimer;
     private Timer countdownTimer;
 
@@ -152,7 +151,7 @@ public class playingscreen extends JPanel {
                 for (moles mole : moles) {
                     mole.hidemole();
                 }
-                frame.setContentPane(new endscreen(frame, score));  // pass it along
+                frame.setContentPane(new endscreen(frame, esp32Listener, score));  // pass it along
                 frame.revalidate();
                 frame.repaint();
             }

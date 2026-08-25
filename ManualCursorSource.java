@@ -1,12 +1,7 @@
 import java.awt.Point;
-import java.awt.Toolkit;
-import java.awt.event.AWTEventListener;
 import java.util.concurrent.atomic.AtomicReference;
-
 import javax.swing.JComponent;
-import javax.swing.SwingUtilities;
 
-import org.w3c.dom.events.MouseEvent;
 
 public class ManualCursorSource implements CursorSource {
     private final JComponent target;

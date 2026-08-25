@@ -1,3 +1,4 @@
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -6,19 +7,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 
 public class endscreen extends JPanel {
-
-    public endscreen(JFrame frame, int score) {
-        playAgainButton.addActionListener(e -> {
-        frame.setContentPane(new playingscreen(frame, esp32Listener));
-        frame.revalidate();
-        frame.repaint();
-    });
-
-    mainMenuButton.addActionListener(e -> {
-        frame.setContentPane(new startscreen(frame, esp32Listener));
-        frame.revalidate();
-        frame.repaint();
-    });
+    public endscreen(JFrame frame, PositionListener esp32Listener, int score){
         setLayout(null);
         String font = "SansSerif";
 
@@ -35,7 +24,7 @@ public class endscreen extends JPanel {
         playAgainButton.setBounds(500, 400, 200, 60);
         playAgainButton.addActionListener(e -> {
             // reuses whatever difficulty was last selected on startscreen
-            frame.setContentPane(new playingscreen(frame));
+            frame.setContentPane(new playingscreen(frame, esp32Listener));
             frame.revalidate();
             frame.repaint();
         });
@@ -44,7 +33,7 @@ public class endscreen extends JPanel {
         mainMenuButton.setFont(new Font(font, Font.BOLD, 24));
         mainMenuButton.setBounds(500, 480, 200, 60);
         mainMenuButton.addActionListener(e -> {
-            frame.setContentPane(new startscreen(frame));
+            frame.setContentPane(new startscreen(frame , esp32Listener));
             frame.revalidate();
             frame.repaint();
         });
@@ -55,3 +44,4 @@ public class endscreen extends JPanel {
         add(mainMenuButton);
     }
 }
+
