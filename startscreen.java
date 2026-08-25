@@ -1,4 +1,3 @@
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -7,10 +6,11 @@ import java.awt.Font;
 
 public class startscreen extends JPanel {
     public static int difficulty = 0;
-    public startscreen(JFrame frame) {
+
+    public startscreen(JFrame frame, PositionListener esp32Listener) {
         setLayout(null);
         String font = "SansSerif";
-        
+
         //text
         JLabel title = new JLabel("Wack-a-Mole");
         title.setFont(new Font(font, Font.BOLD, 48));
@@ -26,7 +26,7 @@ public class startscreen extends JPanel {
         easyButton.setBounds(500, 400, 200, 60);
         easyButton.addActionListener(e -> {
             difficulty = 1;
-            frame.setContentPane(new playingscreen(frame));
+            frame.setContentPane(new playingscreen(frame, esp32Listener));
             frame.revalidate();
             frame.repaint();
         });
@@ -36,9 +36,9 @@ public class startscreen extends JPanel {
         mediumButton.setBounds(500, 480, 200, 60);
         mediumButton.addActionListener(e -> {
             difficulty = 2;
-            frame.setContentPane(new playingscreen(frame));
+            frame.setContentPane(new playingscreen(frame, esp32Listener));
             frame.revalidate();
-            frame.repaint();            
+            frame.repaint();
         });
 
         JButton hardButton = new JButton("HARD");
@@ -46,7 +46,7 @@ public class startscreen extends JPanel {
         hardButton.setBounds(500, 560, 200, 60);
         hardButton.addActionListener(e -> {
             difficulty = 3;
-            frame.setContentPane(new playingscreen(frame));
+            frame.setContentPane(new playingscreen(frame, esp32Listener));
             frame.revalidate();
             frame.repaint();
         });

@@ -8,6 +8,17 @@ import java.awt.Font;
 public class endscreen extends JPanel {
 
     public endscreen(JFrame frame, int score) {
+        playAgainButton.addActionListener(e -> {
+        frame.setContentPane(new playingscreen(frame, esp32Listener));
+        frame.revalidate();
+        frame.repaint();
+    });
+
+    mainMenuButton.addActionListener(e -> {
+        frame.setContentPane(new startscreen(frame, esp32Listener));
+        frame.revalidate();
+        frame.repaint();
+    });
         setLayout(null);
         String font = "SansSerif";
 
