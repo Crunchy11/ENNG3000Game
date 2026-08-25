@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class PositionListener {
 
     // Must match GAME_PORT in the ESP32 sketch
-    private static final int LISTEN_PORT = 4210;
+    private static final int LISTEN_PORT = 4212;
 
     private static final Pattern DISTANCE_PATTERN =
         Pattern.compile("\"d1\":(-?\\d+\\.?\\d*),\"d2\":(-?\\d+\\.?\\d*)");

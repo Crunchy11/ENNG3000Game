@@ -9,7 +9,7 @@ public class CursorDisplay extends JLabel {
     public CursorDisplay(CursorSource initialSource) {
         this.source = initialSource;
         setText("\uD83D\uDDB1");   // pointer emoji, swap for whatever fits your theme
-        setSize(24, 24);
+        setSize(50, 50);
         setOpaque(false);
 
         refreshTimer = new Timer(16, e -> updatePosition()); // ~60fps poll

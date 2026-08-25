@@ -1,11 +1,9 @@
 import java.awt.Point;
-import java.util.concurrent.atomic.AtomicReference;
 import javax.swing.JComponent;
 
 
 public class ManualCursorSource implements CursorSource {
     private final JComponent target;
-    private final AtomicReference<Point> position = new AtomicReference<>(new Point(0, 0));
     PositionListener positionListener;
 
 
@@ -14,12 +12,11 @@ public class ManualCursorSource implements CursorSource {
         this.positionListener = listener;
     }
 
-    private void updatePosition() {
-        position.set(new Point((int) positionListener.latestD1, (int) positionListener.latestD2));
-    }
 
-     @Override
-    public Point getPosition() { return position.get(); }
+@Override
+public Point getPosition() {
+    return new Point((int) positionListener.latestD1, (int) positionListener.latestD2);
+}
 }
 
 
