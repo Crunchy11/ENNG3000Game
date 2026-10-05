@@ -1,5 +1,5 @@
 
-import java.awt.Point;
+import java.awt.geom.Point2D;
 
 public class CursorManager implements CursorSource {
     private CursorSource activeSource;
@@ -13,7 +13,7 @@ public class CursorManager implements CursorSource {
     }
 
     @Override
-    public Point getPosition() {
+    public Point2D.Double getPosition() {
         return activeSource.getPosition();
     }
 }

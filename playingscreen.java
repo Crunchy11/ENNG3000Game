@@ -70,7 +70,7 @@ public class playingscreen extends JPanel {
 
         buildMoleGrid(playArea);
 
-        manualSource = new ManualCursorSource(playArea, esp32Listener);
+        manualSource = new ManualCursorSource(esp32Listener);
         mouseSource = new MouseCursorSource(playArea);
         cursorManager = new CursorManager(manualSource);
         

@@ -1,6 +1,6 @@
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Point;
+import java.awt.geom.Point2D;
 import java.util.Objects;
 import javax.swing.AbstractButton;
 import javax.swing.Timer;
@@ -21,7 +21,7 @@ public class HoverWhackController {
     public void stop() { pollTimer.stop(); }
 
     private void checkHover() {
-        Point p = source.getPosition();
+        Point2D.Double p = source.getPosition();
         if (p == null) {
             lastHit = null;
             return;
@@ -38,7 +38,7 @@ public class HoverWhackController {
 
     // Manually checks mole bounds instead of getComponentAt(), so the
     // cursor label (which sits visually on top) can never intercept the hit test.
-    private Component findMoleAt(Point p) {
+    private Component findMoleAt(Point2D.Double p) {
         for (Component c : moleContainer.getComponents()) {
             if (c instanceof AbstractButton && c.isVisible() && c.getBounds().contains(p)) {
                 return c;

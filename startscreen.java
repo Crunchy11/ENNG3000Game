@@ -1,8 +1,11 @@
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 
 public class startscreen extends JPanel {
     public static int difficulty = 0;
@@ -57,4 +60,5 @@ public class startscreen extends JPanel {
         add(mediumButton);
         add(hardButton);
     }
+    
 }
