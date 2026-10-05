@@ -23,6 +23,7 @@ public class playingscreen extends JPanel {
     private int secondsRemaining;
     private Timer spawnTimer;
     private Timer countdownTimer;
+    private Timer cursorTimer;
 
     private final int spawnIntervalMs;
     private final int upDurationMs;
@@ -87,6 +88,7 @@ public class playingscreen extends JPanel {
 
         startSpawning();
         startCountdown(frame);
+        updateCursorPosition();
     }
 
     /** Creates the grid of Mole buttons and positions them evenly inside playArea. */
@@ -127,6 +129,12 @@ public class playingscreen extends JPanel {
             }
         });
         spawnTimer.start();
+    }
+
+    private void updateCursorPosition() {
+        // Get the position from the ESP32 listener
+        cursorTimer = new Timer(16, e -> cursorLabel.updatePosition());
+        cursorTimer.start();
     }
 
     private moles pickRandomHiddenMole() {
