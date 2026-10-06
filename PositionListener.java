@@ -29,10 +29,7 @@ public class PositionListener {
     public double getLatestD1() { return latestD1; }
     public double getLatestD2() { return latestD2; }
 
-    // Positive = closer to sensor 2's side, negative = closer to sensor 1's side
-    public double getLinearPosition() {
-        return latestD1 - latestD2;
-    }
+
 
     private void listenLoop() {
         try (DatagramSocket socket = new DatagramSocket(LISTEN_PORT)) {
@@ -45,7 +42,6 @@ public class PositionListener {
 
                 String received = new String(packet.getData(), 0, packet.getLength());
                 parseAndUpdate(received);
-                System.out.println(received);
             }
         } catch (Exception e) {
             System.err.println("UDP listener error: " + e.getMessage());

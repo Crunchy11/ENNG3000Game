@@ -43,9 +43,9 @@ public class playingscreen extends JPanel {
         int difficulty = startscreen.difficulty;
 
         switch (difficulty) {
-            case 1 -> { spawnIntervalMs = 1000; upDurationMs = 1500; secondsRemaining = 3; }
-            case 3 -> { spawnIntervalMs = 600;  upDurationMs = 700;  secondsRemaining = 60; }
-            default -> { spawnIntervalMs = 800; upDurationMs = 1000; secondsRemaining = 1060; }
+            case 1 -> { spawnIntervalMs = 500; upDurationMs = 3000; secondsRemaining = 120; } //easy
+            case 3 -> { spawnIntervalMs = 800;  upDurationMs = 1500;  secondsRemaining = 30; } //hard
+            default -> { spawnIntervalMs = 650; upDurationMs = 2000; secondsRemaining = 60; } //medium
         }
 
         scoreLabel = new JLabel("Score: 0");
