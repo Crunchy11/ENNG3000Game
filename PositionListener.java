@@ -45,6 +45,7 @@ public class PositionListener {
 
                 String received = new String(packet.getData(), 0, packet.getLength());
                 parseAndUpdate(received);
+                System.out.println(received);
             }
         } catch (Exception e) {
             System.err.println("UDP listener error: " + e.getMessage());

@@ -16,6 +16,6 @@ public class ManualCursorSource implements CursorSource {
         Double d1 = positionListener.getLatestD1();
         Double d2 = positionListener.getLatestD2();
   
-        return new Point2D.Double(d1, d2);
+        return new Point2D.Double(900-(d1*(900/150)), d2*(550/150)); // scale to fit the screen
     }
 }
