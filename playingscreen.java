@@ -1,6 +1,10 @@
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,8 +15,10 @@ import javax.swing.Timer;
 
 public class playingscreen extends JPanel {
 
-    private static final int GRID_ROWS = 5;
-    private static final int GRID_COLS = 5;
+    private BufferedImage background;
+
+    private static final int GRID_ROWS = 4;
+    private static final int GRID_COLS = 8;
 
     private final JLabel scoreLabel;
     private final JLabel timeLabel;
@@ -36,15 +42,39 @@ public class playingscreen extends JPanel {
 
     private final PositionListener esp32Listener;   // new field
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (background != null) {
+            g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+        }
+    }
+
     public playingscreen(JFrame frame, PositionListener esp32Listener) {
         setLayout(null);
+        try {
+            java.net.URL url = getClass().getResource("/images/background.png");
+
+            if (url == null) {
+                System.err.println("Image not found: /images/background.png");
+            } 
+            
+            else {
+                background = ImageIO.read(url);
+            }
+        } 
+        
+        catch (IOException e) {
+
+            e.printStackTrace();
+        }
         this.esp32Listener = esp32Listener;          // store it
 
         int difficulty = startscreen.difficulty;
 
         switch (difficulty) {
-            case 1 -> { spawnIntervalMs = 500; upDurationMs = 3000; secondsRemaining = 120; } //easy
-            case 3 -> { spawnIntervalMs = 800;  upDurationMs = 1500;  secondsRemaining = 30; } //hard
+            case 1 -> { spawnIntervalMs = 500; upDurationMs = 4000; secondsRemaining = 120; } //easy
+            case 3 -> { spawnIntervalMs = 800;  upDurationMs = 1500;  secondsRemaining = 45; } //hard
             default -> { spawnIntervalMs = 650; upDurationMs = 2000; secondsRemaining = 60; } //medium
         }
 
@@ -57,7 +87,8 @@ public class playingscreen extends JPanel {
         timeLabel.setFont(new Font("SansSerif", Font.BOLD, 28));
 
         JLayeredPane playArea = new JLayeredPane();
-        playArea.setBounds(150, 100, 900, 550);
+        // originally x  - 150, y - 100, width - 900, height - 550
+        playArea.setBounds(143, 203, GameConfig.areaWidth, GameConfig.areaHeight);
         playArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
         JButton backButton = new JButton("Back to Start");
@@ -93,11 +124,12 @@ public class playingscreen extends JPanel {
 
     /** Creates the grid of Mole buttons and positions them evenly inside playArea. */
     private void buildMoleGrid(JLayeredPane playArea) {
-        int areaWidth = 900;
-        int areaHeight = 550;
+        // originally area width - 900, area height - 550
+        int areaWidth = GameConfig.areaWidth;
+        int areaHeight = GameConfig.areaHeight;
         int cellWidth = areaWidth / GRID_COLS;
         int cellHeight = areaHeight / GRID_ROWS;
-        int moleSize = 100;
+        int moleSize = GameConfig.moleSize;  // use the constant from GameConfig
 
         int index = 0;
         for (int row = 0; row < GRID_ROWS; row++) {
@@ -175,3 +207,4 @@ public class playingscreen extends JPanel {
         if (mouseSource != null) mouseSource.dispose();
     }
 }
+
