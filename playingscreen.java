@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -18,7 +17,7 @@ public class playingscreen extends JPanel {
     private BufferedImage background;
 
     private static final int GRID_ROWS = 4;
-    private static final int GRID_COLS = 8;
+    private static final int GRID_COLS = 6;
 
     private final JLabel scoreLabel;
     private final JLabel timeLabel;
@@ -80,11 +79,13 @@ public class playingscreen extends JPanel {
 
         scoreLabel = new JLabel("Score: 0");
         scoreLabel.setBounds(520, 10, 200, 30);
-        scoreLabel.setFont(new Font("SansSerif", Font.BOLD, 30));
+        //scoreLabel.setFont(new Font("SansSerif", Font.BOLD, 30));
+        scoreLabel.setFont(GameFonts.get(30f));
 
         timeLabel = new JLabel("Time: " + secondsRemaining);
         timeLabel.setBounds(10, 10, 200, 30);
-        timeLabel.setFont(new Font("SansSerif", Font.BOLD, 28));
+        //timeLabel.setFont(new Font("SansSerif", Font.BOLD, 28));
+        timeLabel.setFont(GameFonts.get(28f));
 
         JLayeredPane playArea = new JLayeredPane();
         // originally x  - 150, y - 100, width - 900, height - 550

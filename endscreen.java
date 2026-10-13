@@ -1,9 +1,7 @@
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Font;
 
 public class endscreen extends JPanel {
     public endscreen(JFrame frame, PositionListener esp32Listener, int score){
@@ -11,15 +9,18 @@ public class endscreen extends JPanel {
         String font = "SansSerif";
 
         JLabel title = new JLabel("Time's Up!");
-        title.setFont(new Font(font, Font.BOLD, 48));
+        //title.setFont(new Font(font, Font.BOLD, 48));
+        title.setFont(GameFonts.get(48f));
         title.setBounds(435, 120, 600, 80);
 
         JLabel scoreLabel = new JLabel("Final Score: " + score);
-        scoreLabel.setFont(new Font(font, Font.PLAIN, 32));
+        //scoreLabel.setFont(new Font(font, Font.PLAIN, 32));
+        scoreLabel.setFont(GameFonts.get(32f));
         scoreLabel.setBounds(400, 230, 600, 60);
 
         JButton playAgainButton = new JButton("Play Again");
-        playAgainButton.setFont(new Font(font, Font.BOLD, 24));
+        //playAgainButton.setFont(new Font(font, Font.BOLD, 24));
+        playAgainButton.setFont(GameFonts.get(24f));
         playAgainButton.setBounds(500, 400, 200, 60);
         playAgainButton.addActionListener(e -> {
             // reuses whatever difficulty was last selected on startscreen
@@ -29,7 +30,8 @@ public class endscreen extends JPanel {
         });
 
         JButton mainMenuButton = new JButton("Back to Start");
-        mainMenuButton.setFont(new Font(font, Font.BOLD, 24));
+        mainMenuButton.setFont(GameFonts.get(24f));
+        //mainMenuButton.setFont(new Font(font, Font.BOLD, 24));
         mainMenuButton.setBounds(500, 480, 200, 60);
         mainMenuButton.addActionListener(e -> {
             frame.setContentPane(new startscreen(frame , esp32Listener));

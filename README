@@ -2,5 +2,6 @@ To run the file as a .exe, stay in the ENNG3000Game folder and run these 4 lines
 
 javac -d out *.java
 xcopy images out\images /E /I /Y
+xcopy fonts out\fonts /E /I /Y
 jar --create --file dist\app.jar --main-class main -C out .
 java -jar dist\app.jar

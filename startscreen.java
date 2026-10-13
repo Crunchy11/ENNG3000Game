@@ -1,11 +1,7 @@
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
 
 public class startscreen extends JPanel {
     public static int difficulty = 0;
@@ -16,17 +12,20 @@ public class startscreen extends JPanel {
 
         //text
         JLabel title = new JLabel("Wack-a-Mole");
-        title.setFont(new Font(font, Font.BOLD, 48));
-        title.setBounds(435, 150, 600, 80);
+        //title.setFont(new Font(font, Font.BOLD, 48));
+        title.setFont(GameFonts.get(48f));
+        title.setBounds(410, 150, 600, 80);
 
         JLabel diff = new JLabel("Please select a difficulty level:");
-        diff.setFont(new Font(font, Font.ITALIC, 30));
-        diff.setBounds(385, 250, 600, 80);
+        //diff.setFont(new Font(font, Font.ITALIC, 30));
+        diff.setFont(GameFonts.get(30f));
+        diff.setBounds(275, 250, 800, 80);
 
         //Difficulty buttons
         JButton easyButton = new JButton("EASY");
-        easyButton.setFont(new Font(font, Font.BOLD, 24));
-        easyButton.setBounds(500, 400, 200, 60);
+        //easyButton.setFont(new Font(font, Font.BOLD, 24));
+        easyButton.setFont(GameFonts.get(24f));
+        easyButton.setBounds(GameConfig.setBoundDiffX, 400, 200, 60);
         easyButton.addActionListener(e -> {
             difficulty = 1;
             frame.setContentPane(new playingscreen(frame, esp32Listener));
@@ -35,8 +34,9 @@ public class startscreen extends JPanel {
         });
 
         JButton mediumButton = new JButton("MEDIUM");
-        mediumButton.setFont(new Font(font, Font.BOLD, 24));
-        mediumButton.setBounds(500, 480, 200, 60);
+        //mediumButton.setFont(new Font(font, Font.BOLD, 24));
+        mediumButton.setFont(GameFonts.get(24f));
+        mediumButton.setBounds(GameConfig.setBoundDiffX, 480, 200, 60);
         mediumButton.addActionListener(e -> {
             difficulty = 2;
             frame.setContentPane(new playingscreen(frame, esp32Listener));
@@ -45,8 +45,10 @@ public class startscreen extends JPanel {
         });
 
         JButton hardButton = new JButton("HARD");
-        hardButton.setFont(new Font(font, Font.BOLD, 24));
-        hardButton.setBounds(500, 560, 200, 60);
+        //hardButton.setFont(new Font(font, Font.BOLD, 24));
+        hardButton.setFont(GameFonts.get(24f));
+        //hardButton.setFont(new Font(font, Font.BOLD, 24));
+        hardButton.setBounds(GameConfig.setBoundDiffX, 560, 200, 60);
         hardButton.addActionListener(e -> {
             difficulty = 3;
             frame.setContentPane(new playingscreen(frame, esp32Listener));
