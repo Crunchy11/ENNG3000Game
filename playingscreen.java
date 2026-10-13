@@ -78,12 +78,12 @@ public class playingscreen extends JPanel {
         }
 
         scoreLabel = new JLabel("Score: 0");
-        scoreLabel.setBounds(520, 10, 200, 30);
+        scoreLabel.setBounds(520, 10, 250, 30);
         //scoreLabel.setFont(new Font("SansSerif", Font.BOLD, 30));
         scoreLabel.setFont(GameFonts.get(30f));
 
         timeLabel = new JLabel("Time: " + secondsRemaining);
-        timeLabel.setBounds(10, 10, 200, 30);
+        timeLabel.setBounds(10, 10, 250, 30);
         //timeLabel.setFont(new Font("SansSerif", Font.BOLD, 28));
         timeLabel.setFont(GameFonts.get(28f));
 
