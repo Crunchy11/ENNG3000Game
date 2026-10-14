@@ -1,4 +1,4 @@
-To run the file as a .exe, stay in the ENNG3000Game folder and run these 4 lines on powershell:
+To run the file as a .exe, stay in the ENNG3000Game folder and run these 5 lines on powershell:
 
 javac -d out *.java
 xcopy images out\images /E /I /Y
