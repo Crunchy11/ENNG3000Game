@@ -40,7 +40,7 @@ public class HoverWhackController {
     // cursor label (which sits visually on top) can never intercept the hit test.
     private Component findMoleAt(Point2D.Double p) {
         for (Component c : moleContainer.getComponents()) {
-            if (c instanceof AbstractButton && c.isVisible() && c.getBounds().contains(p)) {
+            if (c instanceof moles && ((moles) c).isUp() && c.getBounds().contains(p)) {
                 return c;
             }
         }

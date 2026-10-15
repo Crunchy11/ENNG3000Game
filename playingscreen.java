@@ -1,10 +1,8 @@
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -90,7 +88,7 @@ public class playingscreen extends JPanel {
         JLayeredPane playArea = new JLayeredPane();
         // originally x  - 150, y - 100, width - 900, height - 550
         playArea.setBounds(143, 203, GameConfig.areaWidth, GameConfig.areaHeight);
-        playArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        //playArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
         JButton backButton = new JButton("Back to Start");
         backButton.setBounds(10, 60, 160, 30);
@@ -158,7 +156,8 @@ public class playingscreen extends JPanel {
         spawnTimer = new Timer(spawnIntervalMs, e -> {
             moles candidate = pickRandomHiddenMole();
             if (candidate != null) {
-                candidate.popUp(upDurationMs);
+            int digMs = 1000 + random.nextInt(501); // Adjust dig duration based on difficulty
+            candidate.startDig(digMs, upDurationMs);
             }
         });
         spawnTimer.start();

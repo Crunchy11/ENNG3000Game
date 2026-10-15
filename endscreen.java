@@ -21,7 +21,7 @@ public class endscreen extends JPanel {
         JButton playAgainButton = new JButton("Play Again");
         //playAgainButton.setFont(new Font(font, Font.BOLD, 24));
         playAgainButton.setFont(GameFonts.get(24f));
-        playAgainButton.setBounds(500, 400, 200, 60);
+        playAgainButton.setBounds(500, 400, 300, 60);
         playAgainButton.addActionListener(e -> {
             // reuses whatever difficulty was last selected on startscreen
             frame.setContentPane(new playingscreen(frame, esp32Listener));
@@ -32,7 +32,7 @@ public class endscreen extends JPanel {
         JButton mainMenuButton = new JButton("Back to Start");
         mainMenuButton.setFont(GameFonts.get(24f));
         //mainMenuButton.setFont(new Font(font, Font.BOLD, 24));
-        mainMenuButton.setBounds(500, 480, 200, 60);
+        mainMenuButton.setBounds(500, 480, 400, 60);
         mainMenuButton.addActionListener(e -> {
             frame.setContentPane(new startscreen(frame , esp32Listener));
             frame.revalidate();
