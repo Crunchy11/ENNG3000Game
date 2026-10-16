@@ -130,13 +130,20 @@ public class playingscreen extends JPanel {
         int cellHeight = areaHeight / GRID_ROWS;
         int moleSize = GameConfig.moleSize;  // use the constant from GameConfig
 
+
+        int maxOffsetX = 10;   // pixels left or right of center
+        int maxOffsetY = 4;    // pixels up or down of center
+
         int index = 0;
         for (int row = 0; row < GRID_ROWS; row++) {
             for (int col = 0; col < GRID_COLS; col++) {
                 moles mole = new moles(this::onMoleWhacked);
+    
+                int offsetX = random.nextInt(maxOffsetX * 2 + 1) - maxOffsetX;
+                int offsetY = random.nextInt(maxOffsetY * 2 + 1) - maxOffsetY;
 
-                int x = col * cellWidth + (cellWidth - moleSize) / 2;
-                int y = row * cellHeight + (cellHeight - moleSize) / 2;
+                int x = col * cellWidth + (cellWidth - moleSize) / 2 + offsetX;
+                int y = row * cellHeight + (cellHeight - moleSize) / 2 + offsetY;
                 mole.setBounds(x, y, moleSize, moleSize);
 
                 moles[index++] = mole;
