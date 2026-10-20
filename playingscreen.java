@@ -129,7 +129,7 @@ public class playingscreen extends JPanel {
 
 
         int maxOffsetX = 10;   // pixels left or right of center
-        int maxOffsetY = 4;    // pixels up or down of center
+        int maxOffsetY = 5;    // pixels up or down of center
 
         int index = 0;
         for (int row = 0; row < GRID_ROWS; row++) {
