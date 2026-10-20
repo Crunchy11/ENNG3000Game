@@ -71,7 +71,7 @@ public class playingscreen extends JPanel {
 
         switch (difficulty) {
             case 1 -> { spawnIntervalMs = 500; upDurationMs = 3250; secondsRemaining = 120; } //easy
-            case 3 -> { spawnIntervalMs = 800;  upDurationMs = 1500;  secondsRemaining = 45; } //hard
+            case 3 -> { spawnIntervalMs = 800;  upDurationMs = 1500;  secondsRemaining = 3; } //hard
             default -> { spawnIntervalMs = 650; upDurationMs = 2000; secondsRemaining = 60; } //medium
         }
 
@@ -129,7 +129,7 @@ public class playingscreen extends JPanel {
 
 
         int maxOffsetX = 10;   // pixels left or right of center
-        int maxOffsetY = 5;    // pixels up or down of center
+        int maxOffsetY = 3;    // pixels up or down of center
 
         int index = 0;
         for (int row = 0; row < GRID_ROWS; row++) {

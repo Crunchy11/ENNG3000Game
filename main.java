@@ -9,7 +9,8 @@ public class main {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Wack-a-Mole");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(1200, 800);
+            frame.getContentPane().setPreferredSize(new java.awt.Dimension(GameConfig.screenWidth, GameConfig.screenHeight));
+            frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setContentPane(new startscreen(frame, ESP32Listener));
             frame.setVisible(true);
