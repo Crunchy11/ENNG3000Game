@@ -77,18 +77,15 @@ public class playingscreen extends JPanel {
 
         scoreLabel = new JLabel("Score: 0");
         scoreLabel.setBounds(520, 30, 250, 40);
-        //scoreLabel.setFont(new Font("SansSerif", Font.BOLD, 30));
         scoreLabel.setFont(GameFonts.get(30f));
 
         timeLabel = new JLabel("Time: " + secondsRemaining);
         timeLabel.setBounds(10, 30, 250, 40);
-        //timeLabel.setFont(new Font("SansSerif", Font.BOLD, 28));
         timeLabel.setFont(GameFonts.get(28f));
 
         JLayeredPane playArea = new JLayeredPane();
         // originally x  - 150, y - 100, width - 900, height - 550
-        playArea.setBounds(143, 203, GameConfig.areaWidth, GameConfig.areaHeight);
-        //playArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        playArea.setBounds(143, 203, GameConfig.areaWidth, GameConfig.areaHeight); 
 
         JButton backButton = new JButton("Back to Start");
         backButton.setBounds(10, 80, 160, 40);
