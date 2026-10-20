@@ -76,12 +76,12 @@ public class playingscreen extends JPanel {
         }
 
         scoreLabel = new JLabel("Score: 0");
-        scoreLabel.setBounds(520, 10, 250, 30);
+        scoreLabel.setBounds(520, 30, 250, 40);
         //scoreLabel.setFont(new Font("SansSerif", Font.BOLD, 30));
         scoreLabel.setFont(GameFonts.get(30f));
 
         timeLabel = new JLabel("Time: " + secondsRemaining);
-        timeLabel.setBounds(10, 10, 250, 30);
+        timeLabel.setBounds(10, 30, 250, 40);
         //timeLabel.setFont(new Font("SansSerif", Font.BOLD, 28));
         timeLabel.setFont(GameFonts.get(28f));
 
@@ -91,7 +91,7 @@ public class playingscreen extends JPanel {
         //playArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
         JButton backButton = new JButton("Back to Start");
-        backButton.setBounds(10, 60, 160, 30);
+        backButton.setBounds(10, 80, 160, 40);
         backButton.addActionListener(e -> {
             stopTimers();
             frame.setContentPane(new startscreen(frame, esp32Listener));  // pass it along
