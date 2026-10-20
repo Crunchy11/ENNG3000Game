@@ -1,7 +1,9 @@
-To run the file as a .exe, stay in the ENNG3000Game folder and run these 5 lines on powershell:
+To run the file as a .exe, stay in the ENNG3000Game folder and run the build.bat file this does the same thig as:
 
 javac -d out *.java
 xcopy images out\images /E /I /Y
 xcopy fonts out\fonts /E /I /Y
 jar --create --file dist\app.jar --main-class main -C out .
 java -jar dist\app.jar
+
+just saves you from running 5 lines after evey line changed in the code. Then open the dist folder and double click the executable file within that. If you right click the file go to more options send to you can create a desktop shortcut
