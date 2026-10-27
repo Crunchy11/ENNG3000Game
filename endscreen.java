@@ -2,26 +2,26 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class endscreen extends JPanel {
     public endscreen(JFrame frame, PositionListener esp32Listener, int score){
         setLayout(null);
-        String font = "SansSerif";
+        int w = GameConfig.screenWidth;
 
-        JLabel title = new JLabel("Time's Up!");
-        //title.setFont(new Font(font, Font.BOLD, 48));
-        title.setFont(GameFonts.get(48f));
-        title.setBounds((GameConfig.screenWidth - 375) / 2, 120, 600, 80);
+        JLabel title = new JLabel("Time's Up!", SwingConstants.CENTER);
+        title.setFont(GameFonts.get(GameConfig.scale(48f)));
+        title.setBounds(0, GameConfig.scale(120), w, GameConfig.scale(80));
 
-        JLabel scoreLabel = new JLabel("Final Score: " + score);
-        //scoreLabel.setFont(new Font(font, Font.PLAIN, 32));
-        scoreLabel.setFont(GameFonts.get(32f));
-        scoreLabel.setBounds((GameConfig.screenWidth - 350) / 2, 230, 600, 60);
+        JLabel scoreLabel = new JLabel("Final Score: " + score, SwingConstants.CENTER);
+        scoreLabel.setFont(GameFonts.get(GameConfig.scale(32f)));
+        scoreLabel.setBounds(0, GameConfig.scale(230), w, GameConfig.scale(60));
 
         JButton playAgainButton = new JButton("Play Again");
-        //playAgainButton.setFont(new Font(font, Font.BOLD, 24));
-        playAgainButton.setFont(GameFonts.get(24f));
-        playAgainButton.setBounds((GameConfig.screenWidth - 300) / 2, 400, 300, 60);
+        playAgainButton.setFont(GameFonts.get(GameConfig.scale(24f)));
+        playAgainButton.setBounds((w - GameConfig.scale(300)) / 2, GameConfig.scale(400),
+                                GameConfig.scale(300), GameConfig.scale(60));
+        
         playAgainButton.addActionListener(e -> {
             // reuses whatever difficulty was last selected on startscreen
             frame.setContentPane(new playingscreen(frame, esp32Listener));
@@ -30,9 +30,10 @@ public class endscreen extends JPanel {
         });
 
         JButton mainMenuButton = new JButton("Back to Start");
-        mainMenuButton.setFont(GameFonts.get(24f));
-        //mainMenuButton.setFont(new Font(font, Font.BOLD, 24));
-        mainMenuButton.setBounds((GameConfig.screenWidth - 400) / 2, 480, 400, 60);
+        mainMenuButton.setFont(GameFonts.get(GameConfig.scale(24f)));
+        mainMenuButton.setBounds((w - GameConfig.scale(400)) / 2, GameConfig.scale(480),
+                                GameConfig.scale(400), GameConfig.scale(60));
+        
         mainMenuButton.addActionListener(e -> {
             frame.setContentPane(new startscreen(frame , esp32Listener));
             frame.revalidate();

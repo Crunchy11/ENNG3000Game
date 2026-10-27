@@ -7,8 +7,8 @@ import javax.swing.SwingConstants;
 public class startscreen extends JPanel {
     public static int difficulty = 0;
 
-    private static final int BUTTON_WIDTH = 200;
-    private static final int BUTTON_HEIGHT = 60;
+    // private static final int BUTTON_WIDTH = 200;
+    // private static final int BUTTON_HEIGHT = 60;
 
     private final JLabel title;
     private final JLabel diff;
@@ -66,13 +66,15 @@ public class startscreen extends JPanel {
     @Override
     public void doLayout() {
         int w = getWidth();
-        int buttonX = (w - BUTTON_WIDTH) / 2;
+        int bw = GameConfig.scale(200);
+        int bh = GameConfig.scale(60);
+        int buttonX = (w - bw) / 2;
 
-        title.setBounds(0, 150, w, 80);   // full width + CENTER = centred text
-        diff.setBounds(0, 250, w, 80);
+        title.setBounds(0, GameConfig.scale(150), w, GameConfig.scale(80));
+        diff.setBounds(0, GameConfig.scale(250), w, GameConfig.scale(80));
 
-        easyButton.setBounds(buttonX, 400, BUTTON_WIDTH, BUTTON_HEIGHT);
-        mediumButton.setBounds(buttonX, 480, BUTTON_WIDTH, BUTTON_HEIGHT);
-        hardButton.setBounds(buttonX, 560, BUTTON_WIDTH, BUTTON_HEIGHT);
+        easyButton.setBounds(buttonX, GameConfig.scale(400), bw, bh);
+        mediumButton.setBounds(buttonX, GameConfig.scale(480), bw, bh);
+        hardButton.setBounds(buttonX, GameConfig.scale(560), bw, bh);
     }
 }

@@ -76,19 +76,25 @@ public class playingscreen extends JPanel {
         }
 
         scoreLabel = new JLabel("Score: 0");
-        scoreLabel.setBounds(520, 30, 250, 40);
+        //scoreLabel.setBounds(520, 30, 250, 40);
+        scoreLabel.setBounds(GameConfig.screenWidth - GameConfig.scale(270), GameConfig.scale(30),
+            GameConfig.scale(250), GameConfig.scale(40));
         scoreLabel.setFont(GameFonts.get(30f));
 
         timeLabel = new JLabel("Time: " + secondsRemaining);
-        timeLabel.setBounds(10, 30, 250, 40);
+        //timeLabel.setBounds(10, 30, 250, 40);
+        timeLabel.setBounds(GameConfig.scale(10), GameConfig.scale(30), 
+            GameConfig.scale(250), GameConfig.scale(40));
         timeLabel.setFont(GameFonts.get(28f));
 
         JLayeredPane playArea = new JLayeredPane();
         // originally x  - 150, y - 100, width - 900, height - 550
-        playArea.setBounds(143, 203, GameConfig.areaWidth, GameConfig.areaHeight); 
+        playArea.setBounds(GameConfig.areaX, GameConfig.areaY, GameConfig.areaWidth, GameConfig.areaHeight); 
 
         JButton backButton = new JButton("Back to Start");
-        backButton.setBounds(10, 80, 160, 40);
+        //backButton.setBounds(10, 80, 160, 40);
+        backButton.setBounds(GameConfig.scale(10), GameConfig.scale(80), 
+            GameConfig.scale(160), GameConfig.scale(40));
         backButton.addActionListener(e -> {
             stopTimers();
             frame.setContentPane(new startscreen(frame, esp32Listener));  // pass it along
@@ -123,17 +129,17 @@ public class playingscreen extends JPanel {
         // originally area width - 900, area height - 550
         int areaWidth = GameConfig.areaWidth;
         int areaHeight = GameConfig.areaHeight;
-        int cellWidth = areaWidth / GRID_COLS;
-        int cellHeight = areaHeight / GRID_ROWS;
+        int cellWidth = areaWidth / GameConfig.gridCols;
+        int cellHeight = areaHeight / GameConfig.gridRows;
         int moleSize = GameConfig.moleSize;  // use the constant from GameConfig
 
 
-        int maxOffsetX = 10;   // pixels left or right of center
-        int maxOffsetY = 3;    // pixels up or down of center
+        int maxOffsetX = GameConfig.scale(10);
+        int maxOffsetY = GameConfig.scale(3);
 
         int index = 0;
-        for (int row = 0; row < GRID_ROWS; row++) {
-            for (int col = 0; col < GRID_COLS; col++) {
+        for (int row = 0; row < GameConfig.gridRows; row++) {
+            for (int col = 0; col < GameConfig.gridCols; col++) {
                 moles mole = new moles(this::onMoleWhacked);
     
                 int offsetX = random.nextInt(maxOffsetX * 2 + 1) - maxOffsetX;
