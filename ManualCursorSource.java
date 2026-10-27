@@ -16,7 +16,7 @@ public class ManualCursorSource implements CursorSource {
         double d1 = positionListener.getLatestD1();
         double d2 = positionListener.getLatestD2();
 
-        final double SENSOR_RANGE = 150.0;   // sensor reading that maps to the far edge
+        final double SENSOR_RANGE = 450.0;   // sensor reading that maps to the far edge
 
         // horizontal is flipped, same as before
         double x = GameConfig.areaWidth - (d1 / SENSOR_RANGE) * GameConfig.areaWidth;
