@@ -71,7 +71,7 @@ public class playingscreen extends JPanel {
 
         switch (difficulty) {
             case 1 -> { spawnIntervalMs = 500; upDurationMs = 3250; secondsRemaining = 120; } //easy
-            case 3 -> { spawnIntervalMs = 800;  upDurationMs = 1500;  secondsRemaining = 3; } //hard
+            case 3 -> { spawnIntervalMs = 800;  upDurationMs = 1500;  secondsRemaining = 45; } //hard
             default -> { spawnIntervalMs = 650; upDurationMs = 2000; secondsRemaining = 60; } //medium
         }
 
