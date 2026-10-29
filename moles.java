@@ -12,47 +12,28 @@ public class moles extends JButton {
     private static final int DIG_FRAMES = 12;  
     private static final int IDLE_FRAMES = 8;       // frame count in idleSheet.png
     private static final int IDLE_FRAME_MS = 150;   // time per frame, lower is faster
-
+    private static final int HIT_FRAMES = 2;
+    private static final int HIT_FRAME_MS = 100; 
+    
     private Timer idleTimer;
+    private Timer hitTimer;
+
 
     private final ImageIcon moleIcon = loadIcon("images/mole.png");
     private final ImageIcon hiddenIcon = loadIcon("images/hiddenMole.png");
     private final ImageIcon[] digFrames = loadSheet("images/digSheet.png", DIG_FRAMES);
     private final ImageIcon[] idleFrames = loadSheet("images/moleSheet.png", IDLE_FRAMES);
+    private final ImageIcon[] hitFrames = loadSheet("images/moleHit.png", HIT_FRAMES);
+    private static final int HIT_LOOPS = 3;
 
     private boolean isUp = false;
     private boolean isDigging = false;
+    private boolean isHit = false;
     private final Runnable onWhack;
     private Timer autoHideTimer;
     private Timer digTimer;
 
-    public moles(Runnable onWhack) {
-        this.onWhack = onWhack;
-
-        setBorderPainted(false);
-        setContentAreaFilled(false);
-        setFocusPainted(false);
-        setOpaque(false);
-
-        //setIcon(hiddenIcon);
-
-        addActionListener(e -> whack());
-    }
-
-private void startIdle() {
-    if (idleTimer != null) idleTimer.stop();
-
-    int[] frame = {0};
-    setIcon(idleFrames[0]);
-
-    idleTimer = new Timer(IDLE_FRAME_MS, e -> {
-        frame[0] = (frame[0] + 1) % IDLE_FRAMES;   // wraps back to 0 to loop
-        setIcon(idleFrames[frame[0]]);
-    });
-    idleTimer.start();
-}
-
-    private static ImageIcon loadIcon(String path) {
+   private static ImageIcon loadIcon(String path) {
         URL url = moles.class.getResource(path);
         if (url == null) {
             System.err.println("Image not found: " + path);
@@ -92,9 +73,37 @@ private void startIdle() {
         return frames;
     }
 
+    // When mole is whacked, the onWhack Runnable is called. This allows the game to update the score.
+    public moles(Runnable onWhack) {
+        this.onWhack = onWhack;
+
+        setBorderPainted(false);
+        setContentAreaFilled(false);
+        setFocusPainted(false);
+        setOpaque(false);
+
+        //setIcon(hiddenIcon);
+
+        addActionListener(e -> whack());
+    }
+
+    private void startIdle() {
+        if (idleTimer != null) idleTimer.stop();
+
+        int[] frame = {0};
+        setIcon(idleFrames[0]);
+
+        idleTimer = new Timer(IDLE_FRAME_MS, e -> {
+            frame[0] = (frame[0] + 1) % IDLE_FRAMES;   // wraps back to 0 to loop
+            setIcon(idleFrames[frame[0]]);
+        });
+        idleTimer.start();
+    }
+
+ 
     // Plays the dig frames over digDurationMs, then pops up.
     public void startDig(int digDurationMs, int upDurationMs) {
-        if (isUp || isDigging) return;
+        if (isUp || isDigging || isHit) return;
         isDigging = true;
 
         int frameDelay = Math.max(1, digDurationMs / DIG_FRAMES);
@@ -130,10 +139,12 @@ private void startIdle() {
     public void hidemole() {
         isUp = false;
         isDigging = false;
+        isHit = false;
         setIcon(hiddenIcon);
         if (autoHideTimer != null) autoHideTimer.stop();
         if (digTimer != null) digTimer.stop();
         if (idleTimer != null) idleTimer.stop();
+        if (hitTimer != null) hitTimer.stop();
 
     }
 
@@ -143,13 +154,37 @@ private void startIdle() {
 
     // True only when the mole is fully down and not digging.
     public boolean isHidden() {
-        return !isUp && !isDigging;
+        return !isUp && !isDigging && !isHit;
+    }
+
+    // Plays the hit frames HIT_LOOPS times, then goes back to the hole.
+    private void startHit() {
+        if (hitTimer != null) hitTimer.stop();
+        isHit = true;
+
+        int[] step = {0};
+        setIcon(hitFrames[0]);
+
+        hitTimer = new Timer(HIT_FRAME_MS, e -> {
+            step[0]++;
+            if (step[0] >= HIT_FRAMES * HIT_LOOPS) {
+                hitTimer.stop();
+                isHit = false;
+                setIcon(hiddenIcon);
+            } else {
+                setIcon(hitFrames[step[0] % HIT_FRAMES]); 
+            }
+        });
+        hitTimer.start();
     }
 
     private void whack() {
         if (isUp) {
-            hidemole();
+            isUp = false;
+            if (autoHideTimer != null) autoHideTimer.stop();
+            if (idleTimer != null) idleTimer.stop();
             onWhack.run();
+            startHit();
         }
     }
 }
