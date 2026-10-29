@@ -14,12 +14,9 @@ public class playingscreen extends JPanel {
 
     private BufferedImage background;
 
-    private static final int GRID_ROWS = 4;
-    private static final int GRID_COLS = 6;
-
     private final JLabel scoreLabel;
     private final JLabel timeLabel;
-    private final moles[] moles = new moles[GRID_ROWS * GRID_COLS];
+    private final moles[] moles = new moles[GameConfig.gridRows * GameConfig.gridCols];
     private final Random random = new Random();
 
     private int score = 0;
@@ -134,8 +131,8 @@ public class playingscreen extends JPanel {
         int moleSize = GameConfig.moleSize;  // use the constant from GameConfig
 
 
-        int maxOffsetX = GameConfig.scale(10);
-        int maxOffsetY = GameConfig.scale(3);
+        int maxOffsetX = Math.max(0, Math.min(GameConfig.scale(10), (cellWidth - moleSize) / 2));
+        int maxOffsetY = Math.max(0, Math.min(GameConfig.scale(5), (cellHeight - moleSize) / 2));
 
         int index = 0;
         for (int row = 0; row < GameConfig.gridRows; row++) {
@@ -150,7 +147,7 @@ public class playingscreen extends JPanel {
                 mole.setBounds(x, y, moleSize, moleSize);
 
                 moles[index++] = mole;
-                playArea.add(mole);
+                playArea.add(mole, Integer.valueOf(row));
             }
         }
     }
@@ -183,11 +180,12 @@ public class playingscreen extends JPanel {
         // simple approach: try a handful of random picks before giving up this tick
         for (int attempt = 0; attempt < moles.length; attempt++) {
             moles candidate = moles[random.nextInt(moles.length)];
-            if (!candidate.isUp()) {
+            if (candidate != null && candidate.isHidden()) {
                 return candidate;
             }
         }
-        return null; // all moles happened to be up already this tick
+        return null;
+
     }
 
     /** Counts down the game clock and ends the game at zero. */

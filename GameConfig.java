@@ -12,12 +12,12 @@ public class GameConfig {
     public static float scale(float px) { return (float) (px * factor); }
 
     public static final int gridRows = 4;
-    public static final int gridCols = 6;
+    public static final int gridCols = 4;
 
-    public static final int areaWidth = scale(1000); // Width of the play area
-    public static final int areaHeight = scale(500); // Height of the play area
+    public static final int areaWidth = scale(850); // Width of the play area
+    public static final int areaHeight = scale(600); // Height of the play area
 
-    public static final int moleSize = scale(130);
+    public static final int moleSize = scale(170);
     public static final int cursorSize = scale(75);    // hammer cursor size in pixels
     public static final int setBoundDiffX = 550; // sets the x bound for the difficulty buttons on the start screen
 
