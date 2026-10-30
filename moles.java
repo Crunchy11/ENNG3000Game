@@ -183,6 +183,7 @@ public class moles extends JButton {
             isUp = false;
             if (autoHideTimer != null) autoHideTimer.stop();
             if (idleTimer != null) idleTimer.stop();
+            SoundPlayer.play("/sounds/scorePoint.wav");
             onWhack.run();
             startHit();
         }

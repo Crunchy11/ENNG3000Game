@@ -15,6 +15,7 @@ echo Compiling...
 javac -d out *.java || goto fail
 xcopy images out\images /E /I /Y /Q >nul || goto fail
 xcopy fonts out\fonts /E /I /Y /Q >nul || goto fail
+xcopy sounds out\sounds /E /I /Y /Q >nul || goto fail
 
 echo Building JAR...
 jar --create --file input\app.jar --main-class main -C out . || goto fail
