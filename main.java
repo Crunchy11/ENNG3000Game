@@ -5,6 +5,7 @@ public class main {
     public static void main(String[] args) {
         PositionListener ESP32Listener = new PositionListener();
         ESP32Listener.start(); 
+        SoundPlayer.warmUp("/sounds/moleHit.wav");
 
         SwingUtilities.invokeLater(() -> {
             // JFrame frame = new JFrame("Wack-a-Mole");
